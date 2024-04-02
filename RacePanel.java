@@ -36,30 +36,39 @@ public class RacePanel extends JPanel {
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int maxProgress = 0;
+                int winnerIndex = -1;
+        
                 for (int i = 0; i < progressBars.size(); i++) {
                     JProgressBar progressBar = progressBars.get(i);
                     int value = progressBar.getValue();
-                    if (value < progressBar.getMaximum()) {
+                    if (value >= progressBar.getMaximum()) {
+                        // Car finished the race
+                        if (value > maxProgress) {
+                            // Update maxProgress and winnerIndex
+                            maxProgress = value;
+                            winnerIndex = i;
+                        }
+                    } else {
+                        // Car is still racing, update progress
                         value += Race.cars.get(i).getCarSpeed();
                         progressBar.setValue(value);
-                    } else {
-                        ((Timer) e.getSource()).stop();
-                        int maxIndex = 0;
-                        int maxValue = 0;
-                        for (int j = 0; j < Race.cars.size(); j++) {
-                            Car car = Race.cars.get(j);
-                            if (car.getCarNumber() != -1 && progressBar.getValue() > maxValue) {
-                                maxIndex = j;
-                                maxValue = progressBar.getValue();
-                            }
-                        }
-                        Car winner = Race.cars.get(maxIndex);
-                        javax.swing.JOptionPane.showMessageDialog(RacePanel.this, String.format("The winner is %s!", winner.getCarName()));
-                        System.exit(0);
                     }
+                }
+        
+                if (winnerIndex != -1) {
+                    // Stop the timer
+                    ((Timer) e.getSource()).stop();
+                    // Get the winner car
+                    Car winner = Race.cars.get(winnerIndex);
+                    // Display the winner
+                    javax.swing.JOptionPane.showMessageDialog(RacePanel.this, String.format("The winner is %s!", winner.getCarName()));
+                    // Exit the application
+                    System.exit(0);
                 }
             }
         });
+        
         timer.start();
     
 
