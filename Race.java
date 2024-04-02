@@ -15,7 +15,7 @@ public class Race {
     public Race(){
         gameFrame = new JFrame();
         startPanel = new GameStartPanel();
-        gameFrame.setSize(1800, 1000);
+        gameFrame.setSize(2000, 1500);
         gameFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         gameFrame.setContentPane(startPanel);
         gameFrame.pack();

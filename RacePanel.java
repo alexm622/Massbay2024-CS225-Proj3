@@ -12,7 +12,8 @@ public class RacePanel extends JPanel {
     private ArrayList<JProgressBar> progressBars = new ArrayList<>();
     public RacePanel() {
 
-        
+        setPreferredSize(new java.awt.Dimension(2000, 1500)); // Set your desired width and height
+
         setLayout(new GridLayout(4, 1));
 
 
