@@ -101,6 +101,7 @@ public class SelectionPanel extends JPanel {
                 carColor = Color.GREEN;
                 break;
             default:
+                carColor = Color.BLACK;
                 isValid = false;
                 break;
         }

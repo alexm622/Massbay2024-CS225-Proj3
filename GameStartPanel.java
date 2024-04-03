@@ -60,22 +60,28 @@ public class GameStartPanel extends JPanel {
         remove(addPlayer[i]);
         add(carSelections.get(i), c);
 
-        // add a listener to the save button and update the global car list
         carSelections.get(i).getSubmitButton().addActionListener(e -> {
             System.out.println("Save Player " + i);
-
+        
             // check to see if the input is valid
             if (carSelections.get(i).validateInput()) {
-                // create a new car object and add it to the global car list
+                // create a new car object
                 Car newCar = new Car(carSelections.get(i).getCarNumber(), carSelections.get(i).getCarName(),
                         carSelections.get(i).getCarColor(), carSelections.get(i).getCarSpeed());
-                Race.cars.set(i, newCar);
+                
+                // If the car at index i already exists, update it; otherwise, add it to the list
+                if (Race.cars.size() > i) {
+                    Race.cars.set(i, newCar); // Update existing car
+                } else {
+                    Race.cars.add(newCar); // Add new car
+                }
+                
                 System.out.println("Car " + i + " saved");
             } else {
                 System.out.println("Car " + i + " not saved");
             }
-
         });
+        
 
         revalidate();
 
