@@ -86,7 +86,6 @@ public class SelectionPanel extends JPanel {
 
         // check to see if car name is a string
         carName = textField2.getText();
-
         // check to see if car color is a valid color
         String color = (String) colorList.getSelectedItem();
 
@@ -100,7 +99,17 @@ public class SelectionPanel extends JPanel {
             case "Green":
                 carColor = Color.GREEN;
                 break;
+            case "Yellow":
+                carColor = Color.YELLOW;
+                break;
+            case "Orange":
+                carColor = Color.ORANGE;
+                break;
+            case "Purple":
+                carColor = Color.MAGENTA;
+                break;
             default:
+                carColor = Color.BLACK;
                 isValid = false;
                 break;
         }
