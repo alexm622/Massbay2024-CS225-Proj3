@@ -1,8 +1,6 @@
 import javax.swing.*;
-
 import java.awt.Color;
 import java.util.Random;
-
 
 public class SelectionPanel extends JPanel {
     // Declare the variables as global
@@ -66,9 +64,6 @@ public class SelectionPanel extends JPanel {
         //add a save button
         submitButton = new JButton("Save");
         add(submitButton);
-
-
-
     }
 
     public boolean validateInput() {
@@ -99,6 +94,15 @@ public class SelectionPanel extends JPanel {
                 break;
             case "Green":
                 carColor = Color.GREEN;
+                break;
+            case "Yellow":
+                carColor = Color.YELLOW;
+                break;
+            case "Orange":
+                carColor = Color.ORANGE;
+                break;
+            case "Purple":
+                carColor = Color.MAGENTA;
                 break;
             default:
                 carColor = Color.BLACK;
@@ -230,5 +234,4 @@ public class SelectionPanel extends JPanel {
     public void setCarSpeed(int carSpeed) {
         this.carSpeed = carSpeed;
     }
-
 }
